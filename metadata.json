@@ -1,0 +1,7 @@
+{
+  "name": "Roster Scanner",
+  "description": "Extract your personal work schedule from a staff roster image using Gemini AI.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
