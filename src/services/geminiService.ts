@@ -6,7 +6,6 @@ export interface ScheduleItem {
   day: string;
   date: string;
   shift: string;
-  location?: string;
   notes?: string;
 }
 
@@ -27,7 +26,7 @@ export async function extractScheduleFromImage(
     Instructions:
     1. Identify the row or section corresponding to "${targetPerson}".
     2. Extract each shift assigned to them, including the day, date (in YYYY-MM-DD format if possible, otherwise as written), and shift times/details.
-    3. If there are specific locations or notes for a shift, include them.
+    3. If there are specific notes for a shift, include them.
     4. Provide a brief summary of their total hours or key shifts if possible.
     
     Return the data in a structured JSON format.
@@ -62,7 +61,6 @@ export async function extractScheduleFromImage(
                 day: { type: Type.STRING },
                 date: { type: Type.STRING },
                 shift: { type: Type.STRING },
-                location: { type: Type.STRING },
                 notes: { type: Type.STRING },
               },
               required: ["day", "date", "shift"],
