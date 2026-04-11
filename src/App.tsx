@@ -157,9 +157,8 @@ export default function App() {
         `DTSTAMP:${new Date().toISOString().replace(/[-:]/g, "").split(".")[0]}Z`,
         `DTSTART;VALUE=DATE:${dateStr}`,
         `DTEND;VALUE=DATE:${endDateStr}`,
-        `SUMMARY:Shift: ${item.shift}`,
-        `DESCRIPTION:Shift: ${item.shift}\\nLocation: ${item.location || 'N/A'}\\nNotes: ${item.notes || 'N/A'}`,
-        `LOCATION:${item.location || ""}`,
+        `SUMMARY:${item.shift}`,
+        `DESCRIPTION:Shift: ${item.shift}\\nNotes: ${item.notes || 'N/A'}`,
         "END:VEVENT"
       ].join("\r\n");
     }).join("\r\n");
@@ -497,15 +496,6 @@ export default function App() {
                                 <Input 
                                   value={item.shift} 
                                   onChange={(e) => handleUpdateShift(index, "shift", e.target.value)}
-                                  className="h-9 rounded-lg"
-                                />
-                              </div>
-                              <div className="grid grid-cols-2 gap-4">
-                                <div className="space-y-1.5">
-                                  <Label className="text-[10px] font-bold uppercase text-[#9e9e9e]">Location</Label>
-                                  <Input 
-                                    value={item.location || ""} 
-                                    onChange={(e) => handleUpdateShift(index, "location", e.target.value)}
                                     className="h-9 rounded-lg"
                                   />
                                 </div>
@@ -516,7 +506,6 @@ export default function App() {
                                     onChange={(e) => handleUpdateShift(index, "notes", e.target.value)}
                                     className="h-9 rounded-lg"
                                   />
-                                </div>
                               </div>
                             </div>
                           ) : (
@@ -546,12 +535,6 @@ export default function App() {
                                     <Clock className="w-4 h-4 text-blue-400" />
                                     <span className="text-[#1a1a1a] font-medium">{item.shift}</span>
                                   </div>
-                                  {item.location && (
-                                    <div className="flex items-center gap-1.5">
-                                      <MapPin className="w-4 h-4 text-red-400" />
-                                      <span>{item.location}</span>
-                                    </div>
-                                  )}
                                 </div>
                                 {item.notes && (
                                   <div className="mt-2 text-xs bg-[#fafafa] p-2 rounded-lg border border-[#f0f0f0] text-[#9e9e9e]">
